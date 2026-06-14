@@ -1,0 +1,32 @@
+.Intro{
+    position: relative;
+}
+
+.Intro img{
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.IntroContent {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+
+  h4 {
+    color: #7ba875;
+    font-size: 1.175rem;
+  }
+
+  h1 {
+    color: #11462F;
+    font-size: 4rem;
+  }
+
+  p {
+    color: #3F3F3F;
+    font-size: 1.125rem;
+  }
+}
