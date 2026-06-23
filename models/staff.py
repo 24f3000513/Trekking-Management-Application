@@ -1,8 +1,9 @@
+from flask_login import UserMixin
 from models import db
 from extensions import bcrypt
 from sqlalchemy import Enum
 
-class Staff(db.Model):
+class Staff(db.Model, UserMixin):
     __tablename__ = 'staff'
 
     staff_id = db.Column(db.Integer, primary_key=True)
@@ -20,11 +21,14 @@ class Staff(db.Model):
     is_approved = db.Column(db.Boolean, nullable=False, default=False)
     is_blacklisted = db.Column(db.Boolean, nullable=False, default=False)
 
-    treks = db.relationship('Trek', backref='assigned_staff', lazy=True)
+    treks = db.relationship('Trek_Slot', backref='assigned_staff', lazy=True)
     
     def set_password(self, password):
         self.hashed_password = bcrypt.generate_password_hash((password).encode('utf-8')).decode('utf-8')
     
     def check_password(self, password):
         return bcrypt.check_password_hash(self.hashed_password, password)
+    
+    def get_id(self):
+        return str(self.staff_id)
     

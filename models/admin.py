@@ -1,7 +1,8 @@
+from flask_login import UserMixin
 from models import db
 from extensions import bcrypt
 
-class Admin(db.Model):
+class Admin(db.Model, UserMixin):
     __tablename__ = 'admin'
 
     admin_id = db.Column(db.Integer, primary_key=True)
@@ -17,3 +18,6 @@ class Admin(db.Model):
     
     def __repr__(self):
         return f"Admin('{self.admin_id}', '{self.phno}', '{self.email}')"
+    
+    def get_id(self):
+        return str(self.admin_id)

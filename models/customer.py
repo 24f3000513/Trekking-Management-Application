@@ -1,7 +1,8 @@
+from flask_login import UserMixin
 from models import db
 from extensions import bcrypt
 
-class Customer(db.Model):
+class Customer(db.Model , UserMixin):
     __tablename__ = 'customer'
 
     customer_id = db.Column(db.Integer, primary_key=True)
@@ -20,4 +21,7 @@ class Customer(db.Model):
     
     def check_password(self, password):
         return bcrypt.check_password_hash(self.hashed_password, password)
+    
+    def get_id(self):
+        return str(self.customer_id)
     
