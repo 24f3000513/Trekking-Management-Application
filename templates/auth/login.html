@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% block content %}
+<h2>Login</h2>
+<form method="POST" action="{{ url_for('auth.login') }}">
+{{ form.hidden_tag() }}
+    <div>
+        {{ form.user_login_info.label() }}
+        {{ form.user_login_info() }}
+        {% for error in form.user_login_info.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+    </div>
+    <br>
+    
+    <div>
+        {{ form.password.label() }}
+        {{ form.password() }}
+        {% for error in form.password.errors %}
+            <div>{{ error }}</div>
+        {% endfor %}
+    </div>
+    <br>
+    
+    <div>
+        {{ form.remember_me() }}
+        {{ form.remember_me.label() }}
+    </div>
+    <br>
+
+    <div>
+        {{ form.submit() }}
+    </div>
+</form>
+<a href = "{{url_for('auth.register_customer')}}" class="btn">No account? Join Here.</a>
+
+{% endblock %}

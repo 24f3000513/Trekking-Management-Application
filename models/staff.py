@@ -30,5 +30,12 @@ class Staff(db.Model, UserMixin):
         return bcrypt.check_password_hash(self.hashed_password, password)
     
     def get_id(self):
-        return str(self.staff_id)
+        return  f"staff:{self.staff_id}"
     
+    @property
+    def role(self):
+        return 'staff'
+    
+    @property
+    def is_active(self):
+        return self.is_approved and not self.is_blacklisted

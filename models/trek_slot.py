@@ -22,6 +22,9 @@ class Trek_Slot(db.Model):
 
     created_at = db.Column(db.DateTime,nullable=False,default=db.func.current_timestamp())
 
+    bookings = db.relationship('Booking', backref='trek_slot', lazy=True)
+
+
     __table_args__ = (
         db.CheckConstraint('available_slots >= 0', name='non-negative_available_slots'),
         db.CheckConstraint('total_slots >= 0', name='non-negative_total_slots'),

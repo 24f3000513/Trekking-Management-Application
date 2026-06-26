@@ -20,4 +20,8 @@ class Admin(db.Model, UserMixin):
         return f"Admin('{self.admin_id}', '{self.phno}', '{self.email}')"
     
     def get_id(self):
-        return str(self.admin_id)
+        return f"admin:{self.admin_id}"
+    
+    @property
+    def role(self):
+        return 'admin'

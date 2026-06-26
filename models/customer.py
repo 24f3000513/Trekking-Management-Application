@@ -23,5 +23,12 @@ class Customer(db.Model , UserMixin):
         return bcrypt.check_password_hash(self.hashed_password, password)
     
     def get_id(self):
-        return str(self.customer_id)
+        return f"customer:{self.customer_id}"
     
+    @property
+    def role(self):
+        return 'customer'
+    
+    @property
+    def is_active(self):
+        return not self.is_blacklisted

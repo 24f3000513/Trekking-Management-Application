@@ -16,8 +16,14 @@
             <h4>Welcome to</h4>
             <h1>SherpaBuddy</h1>
             <p>Your Trek. Our Responsibility.</p>
-            <a href="/SherpaBuddy" class="btn">Let's Trek!</a>
+            <a href = "{{url_for('auth.login')}}" class="btn">Let's Trek!</a>
         </div>
     </div> 
+
+    <footer>
+        <p>&copy; 2026 SherpaBuddy. All rights reserved.</p>
+        <a href = "{{url_for('auth.login')}}" class="btn">Staff Login!</a>
+        <a href = "{{url_for('auth.register_staff')}}" class="btn">Join us as staff</a>
+    </footer>
 </body>
 </html>
